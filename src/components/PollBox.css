@@ -1,0 +1,7 @@
+.pollbox {
+    display: flex;
+    justify-content: safe center;
+    flex-direction: column;
+align-items:center;
+ 
+}

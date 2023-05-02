@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Mukta:wght@300;400;500&display=swap');
+
+
+
+.voteCardBox {
+    background: #383838;
+    width: 600px;
+    overflow: hidden;
+    font-family: 'Mukta', sans-serif;
+    color: white;
+    height: 250px;
+    border-radius: 15px;
+    margin-top: 20px;
+    
+}
+
+.voteRow {
+    display: flex;
+    width: 100%;
+}
+
+.voteCardBox:hover {
+    background: #272727;
+}
+
+.voteCardTitle {
+    font-weight: 500;
+    font-size: 25px;
+    margin-left: 10px;
+    padding: 5px;
+}
+
+.voteCardText {
+    font-weight: 300;
+    font-size: 20px;
+}
+
+.statusBox {
+    border-radius: 10px;
+    height: 20px;
+    width: 65px;
+    font-size: 13px;
+    font-weight: 300;
+    background-image: linear-gradient(to right bottom, #f6cc56, #f8cb5b, #fac95f, #fcc864, #fdc768, #fec66d, #ffc671, #ffc576, #ffc47c, #ffc382, #ffc387, #ffc28d);
+    margin-left: 20px;
+    margin-top: 10px;
+    text-align: center;
+    
+}
+
+.tagBox {
+    border-radius: 10px;
+    height: 22px;
+    width: 65px;
+    font-size: 13px;
+    font-weight: 300;
+    border: 1px solid #e0a84e;
+    margin-left: 20px;
+    padding: 0;
+    margin-top: 20px;
+    text-align: center;
+    justify-content: center;
+    overflow: hidden;
+    color: #f6cc56;
+}
+
+
+p#v {
+    margin-left:15px;
+    font-size: 13px;
+    font-weight: 300;
+    margin-top: 10px;
+}
+
+.progressBox {
+    height: 100px;
+    width: 65%;
+    background: #2f2f2f;
+    border-radius: 10px;
+    margin-left: 15px;
+    margin-top: 10px;
+    justify-content: center;
+}
+.circleBox {
+    height: 100px;
+    width: 20%;
+    background: #2f2f2f;
+    border-radius: 10px;
+    margin-left: 45px;
+    margin-top: 10px;
+}
+
+.progressBar {
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 7px;
+    padding: 5px;
+
+}
+
+.circleDiv {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+p#cir {
+    font-size: 13px;
+    font-weight: 300;
+    text-align: center;
+    margin-top: 5px;
+}
+
+p#progress {
+    
+    clear: both;
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    
+}
