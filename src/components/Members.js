@@ -24,7 +24,7 @@ const indToIcn = function(i) {
     }
 
 }
-
+const total = 100;
 function Members(props) {
     useEffect(() => {
         AOS.init();
@@ -42,8 +42,10 @@ function Members(props) {
                     
                     </div>
                 );
-            })}
 
+               
+            })}
+             <p id = "bottom">+ {total - 5} more</p>
         </div>
     );
 }

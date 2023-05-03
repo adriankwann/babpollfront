@@ -72,6 +72,12 @@ p#pollInfoSubTitle {
 
 }
 
+.buttonRow {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
 .description {
     font-weight: 300;
     display: flex;
@@ -82,10 +88,11 @@ p#pollInfoSubTitle {
 }
 
 .submitButton {
+    background-color: black;
     font-weight: 400;
     font-size: 20px;
     text-align: center;
-    width: 20%;
+    width: 15%;
     border: 1px solid #f6cc56;
     align-self: center;
     margin-top: 20px;
@@ -93,7 +100,35 @@ p#pollInfoSubTitle {
     margin-bottom: 15px;
     background: black;
     height: 35px;
+    margin-left: 20px;
+   
 }
+
+.submitButton:hover {
+    background-color: #a30016;
+}
+
+.submitButtonyes {
+    background-color: black;
+    font-weight: 400;
+    font-size: 20px;
+    text-align: center;
+    width: 15%;
+    border: 1px solid #f6cc56;
+    align-self: center;
+    margin-top: 20px;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    background: black;
+    height: 35px;
+    margin-left: 20px;
+   
+}
+
+.submitButtonyes:hover {
+    background-color: #00c925;
+}
+
 
 .dataBox {
     display: flex;

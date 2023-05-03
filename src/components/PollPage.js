@@ -5,10 +5,25 @@ import 'aos/dist/aos.css';
 import {useEffect} from 'react';
 import { motion } from "framer-motion"
 import { CircularProgress, CircularProgressLabel } from '@chakra-ui/react'
+import { ethers, BigNumber } from 'ethers';
+import FactoryABI from '../Factory.json';
 
-
-const total = 500;
+async function vote(ind, bool) {
+    if (window.ethereum) {
+       let accounts = await window.ethereum.request({
+         method: 'eth_requestAccounts'
+       })
+       const provider = new ethers.providers.Web3Provider(window.ethereum)
+       const signer = provider.getSigner()
+       const contract = new ethers.Contract("0x5944CbaA514E00E6ba7a05fCc0D5391eef3F6F12", FactoryABI.abi, signer)
+       contract.castVote(ind, bool);
+     }
+}
+const total = 100;
 function PollPage(props) {
+
+
+    
     useEffect(() => {
         AOS.init();
       }, []);
@@ -23,8 +38,21 @@ function PollPage(props) {
                 <p id = "pollInfoTitle">{props.poll.title}</p>
                 <p id = "pollInfoSubTitle">Description:</p>
                 <div className = "description">{props.poll.desc}</div>
+
+
+                <div className = "buttonRow">
                 <motion.button transition={{ type: "spring", stiffness: 400, damping: 17 }} whileHover={{ scale: 1.2}}
-    whileTap={{ scale: 0.9 }} className = "submitButton">Vote</motion.button>
+    whileTap={{ scale: 0.9 }} className = "submitButtonyes" onClick = {()=> {
+        vote(props.poll.id, 1);
+    }}>Vote Yes</motion.button>
+
+
+<motion.button transition={{ type: "spring", stiffness: 400, damping: 17 }} whileHover={{ scale: 1.2}}
+    whileTap={{ scale: 0.9 }} className = "submitButton" onClick = {()=> {
+        vote(props.poll.id, 0);
+    }}>Vote no</motion.button>
+
+</div>
             </div>
             <p id = "pollInfoSubTitle">Poll Data:</p>
             <div className= "dataBox">
@@ -58,9 +86,7 @@ function PollPage(props) {
                 <CircularProgress value={(props.poll.no/props.poll.votes*100).toFixed(0)} marginLeft = "15px" size = '150px' color='red.400' thickness='5px'>
                     <CircularProgressLabel fontSize = "20px">No <br/> {(props.poll.no/props.poll.votes*100).toFixed(0)}%</CircularProgressLabel>
                 </CircularProgress>
-                <CircularProgress value={5} marginLeft = "15px" size = '150px' color='orange.400' thickness='5px'>
-                    <CircularProgressLabel  fontSize = "20px">Abstain <br/> 5%</CircularProgressLabel>
-                </CircularProgress>
+              
 
 
                     </div>

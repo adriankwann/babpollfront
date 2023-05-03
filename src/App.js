@@ -8,7 +8,8 @@ import {
   darkTheme
 } from '@rainbow-me/rainbowkit';
 import { configureChains, createClient, WagmiConfig } from 'wagmi';
-import { mainnet, polygon, optimism, arbitrum } from 'wagmi/chains';
+import { polygonMumbai
+} from 'wagmi/chains';
 import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { publicProvider } from 'wagmi/providers/public';
 import Home from "./components/Home.js"
@@ -19,10 +20,15 @@ import {useState, useEffect} from 'react';
 import PollPage from "./components/PollPage"
 import Footer from "./components/Footer";
 import Create from "./components/Create";
+import { ethers, BigNumber } from 'ethers';
+import FactoryABI from './Factory.json';
+
+
+const contractAddress = "0x4C039747B63a36c4E2546f91daBaCeCe6CF2560D";
 
 
 const { chains, provider } = configureChains(
-  [mainnet, polygon, optimism, arbitrum],
+  [polygonMumbai],
   [
     alchemyProvider({ apiKey: process.env.ALCHEMY_ID }),
     publicProvider()
@@ -44,22 +50,22 @@ const wagmiClient = createClient({
 function App() {
   const [polls, setPolls] = useState([
     {
-      id: 0,
+      id: 5,
       title: 'Should B@B implement a return offer policy?',
-      votes: 200,
-      yes: 150,
-      no: 50,
+      votes: 100,
+      yes: 60,
+      no: 40,
       deadline: [5, 22],
       status: "Ongoing",
       tags: ['urgent'],
       desc: "Current engagement within B@B has been relatively week. It may be beneficial to release return applications to motivate people to stay committed to the club."
     },
     {
-      id: 1,
+      id: 6,
       title: 'Should b@bies be restricted be voting',
-      votes: 245,
-      yes: 40,
-      no: 205,
+      votes: 70,
+      yes: 20,
+      no: 50,
       deadline: [0, 0],
       status: "Complete",
       tags: ['elections', 'urgent'],
@@ -90,6 +96,56 @@ function App() {
     },
 
   ])
+
+  const [isLoading, setIsLoading] = useState(false);
+
+
+  async function getter() {
+    setIsLoading(true);
+    if (window.ethereum) {
+      let accounts = await window.ethereum.request({
+        method: 'eth_requestAccounts'
+      })
+      const provider = new ethers.providers.Web3Provider(window.ethereum)
+      const signer = provider.getSigner()
+      const contract = new ethers.Contract("0x5944CbaA514E00E6ba7a05fCc0D5391eef3F6F12", FactoryABI.abi, signer)
+      let c = await contract.getCurrentPollId();
+      let temp = polls;
+      for(let i = 0; i < c; i++) {
+        let data = await contract.getPollData(i);
+        let pollObject = {};
+        pollObject["id"] = i;
+        pollObject["title"] = data[0];
+        pollObject["desc"] = data[1];
+        pollObject["yes"] = parseInt(data[2]);
+        pollObject["no"] = parseInt(data[3]);
+        pollObject["votes"] = parseInt(data[2]) + parseInt(data[3]);
+        pollObject["status"] = "Ongoing";
+        pollObject["tags"] = [];
+        let t = parseInt(data[4]) + parseInt(data[5]) - Math.floor(Date.now() / 1000);
+        // Unix timestamp for May 3, 2022, at 12:00:00 AM UTC // Create a new Date object using the Unix timestamp const dateObj = new Date(unixTimestamp * 1000); // Get the hours and minutes from the date object const hours = dateObj.getUTCHours(); const minutes = dateObj.getUTCMinutes(); console.log(`Hours: ${hours}, Minutes: ${minutes}`); // Output: Hours: 0, Minutes: 0
+        let dateObj = new Date(t * 1000);
+        let hours = dateObj.getUTCHours(); 
+        let minutes = dateObj.getUTCMinutes();
+        pollObject["deadline"] = [hours, minutes];
+        // pollObject["start"] = parseInt(data[4]);
+        // pollObject["yes"] = parseInt(data[2]);
+        if (!(temp.some(obj => obj["title"] === pollObject.title))) {
+          temp.push(pollObject);
+        }    
+      }
+
+
+      setPolls(temp);
+      setIsLoading(false);
+
+    }
+
+  }
+
+  useEffect(() => {
+    getter();
+  }, []);
   return (
     <WagmiConfig client={wagmiClient}>
       <RainbowKitProvider chains={chains} theme={darkTheme({accentColor: '#f6cc56',
@@ -102,7 +158,7 @@ function App() {
 
       <Routes>
         <Route exact path='/' element={
-        <Home polls = {polls} members = {members}/>
+        <Home polls = {polls} members = {members} isLoading = {isLoading}/>
         } />
         {polls.map((poll) => (
         <Route key={poll.id} path={`/poll/${poll.id}`} element={<PollPage poll = {poll}/>} />

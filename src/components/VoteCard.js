@@ -3,15 +3,17 @@ import "./VoteCard.css"
 import { Progress, CircularProgress, CircularProgressLabel, ProgressLabel} from '@chakra-ui/react'
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import {useEffect} from 'react';
+import {useEffect, useState} from 'react';
 
 
-const total = 500;
+const total = 100;
+
 
 export default function VoteCard({poll}) {
     useEffect(() => {
         AOS.init();
       }, []);
+      
     return (
         <div className = "voteCardBox" data-aos = "fade-up">
             <div className = "voteRow">
@@ -24,14 +26,14 @@ export default function VoteCard({poll}) {
                 <div className = "progressBox">
                 
                     <div className = "progressBar">
-                        <Progress borderRadius="1rem" colorScheme='green' height='30px' value={poll.yes/poll.votes * 100}>
-                            <ProgressLabel textAlign="left" fontFamily = "inter" fontSize = "13px" marginLeft = "10px">Yes</ProgressLabel>
+                        <Progress borderRadius="1rem" colorScheme='green' height='30px' value={poll.votes === 0? 0: poll.yes/poll.votes * 100}>
+                            <ProgressLabel textAlign="left" fontFamily = "inter" fontSize = "13px" marginLeft = "10px">Yes: {poll.yes}</ProgressLabel>
                         </Progress>
                     </div>
 
                     <div className = "progressBar">
-                        <Progress borderRadius="1rem" colorScheme="red" height='30px' value={poll.no/poll.votes * 100}>
-                            <ProgressLabel textAlign="left" fontFamily = "inter"  fontSize = "13px" marginLeft = "10px">No</ProgressLabel>
+                        <Progress borderRadius="1rem" colorScheme="red" height='30px' value={poll.votes === 0? 0:poll.no/poll.votes * 100}>
+                            <ProgressLabel textAlign="left" fontFamily = "inter"  fontSize = "13px" marginLeft = "10px">No: {poll.no}</ProgressLabel>
                         </Progress>
                         
                     </div>

@@ -13,7 +13,7 @@ function Home(props) {
     return (
         <div>
         <div className = "homeTitle"data-aos = "fade-in">All Polls</div>
-        <PollBox polls = {props.polls} data-aos="fade-in"/>
+        <PollBox polls = {props.polls} isLoading = {props.isLoading} data-aos="fade-in"/>
         <br></br><br></br>
         <div className = "homeTitle" data-aos = "fade-up">Members</div>
         <Members members = {props.members}/>

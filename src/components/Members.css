@@ -38,3 +38,9 @@ p#status {
     font-weight: 400;
     color: #f6cc56;
 }
+
+p#bottom {
+    font-size: 15px;
+    text-align: center;
+    color: #f6cc56;
+}
