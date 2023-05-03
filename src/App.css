@@ -4,14 +4,14 @@
 .App {
   font-family: 'Mukta', sans-serif;
   background: black;
-  height: 100vh;
+  
 }
 
 .homeTitle {
   font-weight: 300;
   color: white;
   font-size: 30px;
-
+  margin-top: 15px;
   text-align: center;
 }
 

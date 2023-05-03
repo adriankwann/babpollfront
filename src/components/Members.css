@@ -1,0 +1,38 @@
+.memberBox {
+    display: flex;
+    width: 30%;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column; /* stack child elements vertically */
+    margin: 0 auto; /* center the container horizontally */
+  }
+  
+  .memberRow {
+    display: flex;
+    width: 100%;
+    justify-content: left;
+  
+    margin-top: 25px;
+    height: 50px;
+    align-items: center; /* vertically align the icon and the text */
+    justify-content: space-between; /* evenly space the child elements */
+    
+  }
+img#w {
+    height: 45px;
+    width: 45px;
+    object-fit: contain;
+}
+p#s {
+    font-size: 15px;
+    font-weight: 500;
+    margin-left: 20px;
+    padding-left: 10px; /* add some padding to the left of the name to separate it from the icon */
+
+}
+
+p#status {
+    font-size: 15px;
+    font-weight: 400;
+    color: #f6cc56;
+}
