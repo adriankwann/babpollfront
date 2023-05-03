@@ -1,4 +1,4 @@
-import { Divider } from '@chakra-ui/react'
+
 import './App.css';
 import Navbar from "./components/Navbar.js"
 import '@rainbow-me/rainbowkit/styles.css';
@@ -15,9 +15,10 @@ import Home from "./components/Home.js"
 import { ChakraProvider } from '@chakra-ui/react'
 import { BrowserRouter as Router, Routes, Route}
     from 'react-router-dom';
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import PollPage from "./components/PollPage"
-import Footer from "./components/Footer"
+import Footer from "./components/Footer";
+import Create from "./components/Create";
 
 
 const { chains, provider } = configureChains(
@@ -106,6 +107,10 @@ function App() {
         {polls.map((poll) => (
         <Route key={poll.id} path={`/poll/${poll.id}`} element={<PollPage poll = {poll}/>} />
       ))}
+
+      <Route path = '/create' element={<Create></Create>}>
+
+      </Route>
       </Routes>
 
 

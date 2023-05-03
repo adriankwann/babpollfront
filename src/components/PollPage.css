@@ -1,0 +1,150 @@
+.pollInfoWrap {
+    display: flex;
+    justify-content: center;
+    width: 60%;
+    flex-direction: column;
+    margin: 0 auto;
+    margin-top: 35px;
+}
+
+p#pollInfoTitle {
+    font-weight: 700;
+    text-align: center;
+    font-size: 40px;
+    margin-top: 20px;
+}
+
+p#pollInfoSubTitle {
+    font-weight: 500;
+    text-align: left;
+    font-size: 20px;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.pollInfoBox {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    margin: 0 auto;
+    background-image: linear-gradient(to right bottom, #000000, #0d0505, #160b07, #1b1107, #1d1607, #2b2411, #393417, #45451e, #6a652b, #948738, #c3a947, #f6cc56);
+    border-radius: 15px;
+
+    
+}
+
+
+
+.statusBox2 {
+    border-radius: 10px;
+    height: 26px;
+    width: 80px;
+    font-size: 16px;
+    font-weight: 300;
+    background-image: linear-gradient(to right bottom, #f6cc56, #f8cb5b, #fac95f, #fcc864, #fdc768, #fec66d, #ffc671, #ffc576, #ffc47c, #ffc382, #ffc387, #ffc28d);
+    margin-left: 20px;
+    margin-top: 15px;
+    text-align: center;
+
+}
+
+.timeBox {
+    border-radius: 10px;
+    height: 26px;
+    width: 80px;
+    font-size: 16px;
+    font-weight: 300;
+    border: 1px solid #e0a84e;
+    margin-left: 20px;
+    padding: 0;
+    margin-top: 15px;
+    text-align: center;
+    justify-content: center;
+    color: #f6cc56;
+    margin-right: 15px;
+}
+
+.pollRow {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+}
+
+.description {
+    font-weight: 300;
+    display: flex;
+    justify-content: left;
+    font-size: 20px;
+    margin-top: 15px;
+    margin-left: 20px;
+}
+
+.submitButton {
+    font-weight: 400;
+    font-size: 20px;
+    text-align: center;
+    width: 20%;
+    border: 1px solid #f6cc56;
+    align-self: center;
+    margin-top: 20px;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    background: black;
+    height: 35px;
+}
+
+.dataBox {
+    display: flex;
+    justify-content: center space-evenly;
+    margin: 0 auto;
+    margin-top: 20px;
+    flex-direction: column;
+    width: 100%
+
+}
+
+.dataElem {
+    background: #1d1d1d;
+    height: 150px;
+    width: 190px;
+    margin-left: 10px;
+    border-radius: 15px;
+    
+}
+
+p#datatitle {
+    font-weight: 500;
+    font-size: 40px;
+    text-align: center;
+    overflow: hidden;
+    margin-top: 20px;
+}
+p#datatext {
+    font-weight: 300;
+    font-size: 25px;
+    text-align: center;
+    overflow: hidden;
+}
+
+.graphbox {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 15px;
+    background: #1d1d1d;
+    margin-top: 30px;
+    padding: 25px;
+}
+
+.graphRow {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+
+
+

@@ -1,0 +1,40 @@
+.createBox {
+    display: flex;
+    
+    flex-direction: column;
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 25px;
+    height: 80vh;
+
+}
+
+p#createTitle {
+    text-align: center;
+    font-weight: 500;
+    font-size: 35px;
+}
+
+.form {
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.submitButton2 {
+    height: 35px;
+    width: 15%;
+    border: 1px #f6cc56 solid;
+    border-radius: 15px;
+    font-size: 15px;
+    margin: 0 auto;
+}
+
+.createRow {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin-top: 50px;
+}

@@ -1,13 +1,19 @@
 import * as React from 'react';
 import "./VoteCard.css"
 import { Progress, CircularProgress, CircularProgressLabel, ProgressLabel} from '@chakra-ui/react'
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import {useEffect} from 'react';
 
 
 const total = 500;
 
 export default function VoteCard({poll}) {
+    useEffect(() => {
+        AOS.init();
+      }, []);
     return (
-        <div className = "voteCardBox">
+        <div className = "voteCardBox" data-aos = "fade-up">
             <div className = "voteRow">
                 <div className = "statusBox">{poll.status}</div>
                 <p id = "v">Deadline: {poll.deadline[0]}H {poll.deadline[1]}M</p>

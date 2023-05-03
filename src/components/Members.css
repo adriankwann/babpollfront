@@ -5,31 +5,33 @@
     text-align: center;
     flex-direction: column; /* stack child elements vertically */
     margin: 0 auto; /* center the container horizontally */
+    margin-bottom: 25px;
   }
   
   .memberRow {
     display: flex;
     width: 100%;
     justify-content: left;
-  
     margin-top: 25px;
     height: 50px;
-    align-items: center; /* vertically align the icon and the text */
-    justify-content: space-between; /* evenly space the child elements */
-    
-  }
+    align-items: center;
+    flex-direction: row; /* change the direction to row */
+}
+
+p#s {
+    font-size: 15px;
+    font-weight: 500;
+    text-align:left;
+    margin-left: 25px;
+    flex-grow: 1; /* add flex-grow property to push the status to the right */
+}
+
 img#w {
     height: 45px;
     width: 45px;
     object-fit: contain;
 }
-p#s {
-    font-size: 15px;
-    font-weight: 500;
-    margin-left: 20px;
-    padding-left: 10px; /* add some padding to the left of the name to separate it from the icon */
 
-}
 
 p#status {
     font-size: 15px;
